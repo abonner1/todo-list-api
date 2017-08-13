@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: MyString
+  date: 2017-08-13
+  is_favorited: MyString
+
+two:
+  user_id: MyString
+  date: 2017-08-13
+  is_favorited: MyString

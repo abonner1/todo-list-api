@@ -54,6 +54,7 @@ Todo [id, description, todo_list_id, is_completed]
   },
   TodoLists: [
     {
+      name: "Things to do today",
       id: 1,
       user_id: 3,
       date: 2017-08-13,
