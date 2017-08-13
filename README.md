@@ -43,6 +43,7 @@ Todo [id, description, todo_list_id, is_completed]
 
 ## JSON Data Structure
 
+```
 {
   User: {
     firstName: "Andrew",
@@ -80,3 +81,4 @@ Todo [id, description, todo_list_id, is_completed]
     }
   ]
 }
+```
