@@ -3,25 +3,31 @@
 ## Routes
 
 ### Users
+```
 POST   /api/users
 GET    /api/users/:id
 PATCH  /api/users/:id
 PUT    /api/users/:id
 DELETE /api/users/:id
+```
 
 ### TodoLists
+```
 GET    /api/users/:user_id/todo_lists
 POST   /api/users/:user_id/todo_lists
 GET    /api/todo_lists/:id
 PATCH  /api/todo_lists/:id
 PUT    /api/todo_lists/:id
 DELETE /api/todo_lists/:id
+```
 
 ### Todos
+```
 POST   /api/todo_lists/:todo_list_id/todos
 PATCH  /api/todos/:id
 PUT    /api/todos/:id
 DELETE /api/todos/:id
+```
 
 ## Schema
 
