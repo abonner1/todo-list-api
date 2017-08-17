@@ -1,13 +1,21 @@
 class Api::TodosController < ApplicationController
-  before_action :set_todo_list, only: [:create]
+  before_action :set_todo_list, only: [:index, :create]
   before_action :set_todo, except: [:create]
+
+  def index
+    if @todo_list && @todo_list.todos
+      render json: @todo_list.todos
+    else
+      render json: {message: "Not Found"}, status: 400
+    end
+  end
 
   def create
     @todo_list.todos.build(todo_params)
     if @todo_list.save
       render json: @todo_list.todos.last
     else
-      render json: {message: todo_list.errors }, status: 400
+      render json: {message: todo_list.errors.full_messags}, status: 400
     end
   end
 
@@ -15,15 +23,15 @@ class Api::TodosController < ApplicationController
     if @todo.update(todo_params)
       render json: @todo
     else
-      render json: {message: todo_list.errors}, status: 400
+      render json: {message: todo_list.errors.full_messags}, status: 400
     end
   end
 
   def destroy
     if @todo.destroy
-      render json: {message: 'Success'}, status: 204
+      render json: {message: 'Deleted Successfully'}, status: 204
     else
-      render json: {message: @todo.errors}, status: 400
+      render json: {message: @todo.errors.full_messags}, status: 400
     end
   end
 
