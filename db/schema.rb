@@ -18,16 +18,14 @@ ActiveRecord::Schema.define(version: 20170813225428) do
   create_table "todo_lists", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
-    t.date "date"
-    t.boolean "is_favorited", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "todos", force: :cascade do |t|
-    t.text "description"
+    t.string "description"
     t.integer "todo_list_id"
-    t.boolean "is_completed"
+    t.boolean "is_completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
