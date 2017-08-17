@@ -37,7 +37,7 @@ class Api::TodoListsController < ApplicationController
       todos.each do |todo|
         todo.destroy
       end
-      render json: {message: 'Deleted Successfully'}, status: 200
+      render json: {message: 'Deleted Successfully'}, status: 204
     else
       render json: {message: @todo_list.errors.full_messages}, status: 400
     end
