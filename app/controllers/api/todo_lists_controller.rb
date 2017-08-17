@@ -1,29 +1,33 @@
 class Api::TodoListsController < ApplicationController
-  before_action :set_user, only: [:create]
+  before_action :authenticate_user
   before_action :set_todo_list, only: [:show, :update, :destroy]
 
   def index
-    render json: @todo_lists
+    render json: current_user.todo_lists
   end
 
   def create
-    @user.todo_lists.build(todo_list_params)
-    if @user.save
-      render json: @user.todo_lists.last
+    current_user.todo_lists.build(todo_list_params)
+    if current_user.save
+      render json: current_user.todo_lists.last
     else
-      render json: {message: @user.todo_lists.last.errors}, status: 400
+      render json: {message: todo_list.errors.full_messages}, status: 400
     end
   end
 
   def show
-    render json: @todo_list
+    if @todo_list
+      render json: @todo_list
+    else
+      render json: {message: "Not Found"}, status: 404
+    end
   end
 
   def update
     if @todo_list.update(todo_list_params)
       render json: @todo_list
     else
-      render json: {message: @todo_list.errors}, status: 400
+      render json: {message: @todo_list.errors.full_messages}, status: 400
     end
   end
 
@@ -33,28 +37,20 @@ class Api::TodoListsController < ApplicationController
       todos.each do |todo|
         todo.destroy
       end
-      render json: {message: 'Success'}, status: 204
+      render json: {message: 'Deleted Successfully'}, status: 200
     else
-      render json: {message: @todo_list.errors}, status: 400
+      render json: {message: @todo_list.errors.full_messages}, status: 400
     end
   end
 
   private
-
-    def set_user
-      @user = User.find_by(id: params[:user_id])
-    end
-
-    def set_users_todo_lists
-      @todo_lists = @user.todo_lists
-    end
 
     def set_todo_list
       @todo_list = TodoList.find_by(id: params[:id])
     end
 
     def todo_list_params
-      params.require(:todo_list).permit(:name, :user_id, :date, :is_favorited)
+      params.require(:todo_list).permit(:name)
     end
 
 end
