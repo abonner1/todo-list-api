@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170813225428) do
+ActiveRecord::Schema.define(version: 20170824230843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,13 @@ ActiveRecord::Schema.define(version: 20170813225428) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "favorited", default: false
   end
 
   create_table "todos", force: :cascade do |t|
     t.string "description"
     t.integer "todo_list_id"
-    t.boolean "is_completed", default: false
+    t.boolean "completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
