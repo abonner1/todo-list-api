@@ -58,7 +58,7 @@ Todo [id, description, todo_list_id, is_completed]
       id: 1,
       user_id: 3,
       date: 2017-08-13,
-      isFavorited: false
+      favorited: false
     }
   ],
   Todos: [
@@ -66,19 +66,19 @@ Todo [id, description, todo_list_id, is_completed]
       id: 1,
       description: "Take out the trash",
       todoListId: 1,
-      isCompleted: false
+      completed: false
     },
     {
       id: 2,
       description: "Finish Redux",
       todoListId: 1,
-      isCompleted: true
+      completed: true
     },
     {
       id: 3,
       description: "Complete Rails API",
       todoListId: 1,
-      isCompleted: false
+      completed: false
     }
   ]
 }
