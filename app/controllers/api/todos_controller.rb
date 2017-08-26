@@ -3,11 +3,7 @@ class Api::TodosController < ApplicationController
   before_action :set_todo, except: [:create]
 
   def index
-    if @todo_list && @todo_list.todos
-      render json: @todo_list.todos
-    else
-      render json: {message: "Not Found"}, status: 400
-    end
+    render json: Todo.all
   end
 
   def create
@@ -46,7 +42,7 @@ class Api::TodosController < ApplicationController
     end
 
     def todo_params
-      params.require(:todo).permit(:description, :todo_list_id, :is_completed)
+      params.require(:todo).permit(:description, :todo_list_id, :completed)
     end
 
 end
